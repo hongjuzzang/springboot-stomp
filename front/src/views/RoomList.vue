@@ -56,7 +56,7 @@ export default {
         }
       }, err=>{
         console.log(err)
-        alert("error : 새로고침하세요")
+        this.$router.push({ name: "Home" });
       })
 
   },
@@ -65,7 +65,18 @@ export default {
      this.$router.push({name:"Room",params:{roomid : id, nickname:this.nickname, id : this.id}})
    },
    createRoom(){
-     console.log("방만들게")
+         axios({
+        method:'post',
+        url:'/api/chat/room',
+        baseURL:'http://localhost:8080/',
+        headers:{'content-type': 'application/json'},
+        data : {"id":this.id,"title":this.title, "masterId":this.id}
+      }).then(res=>{
+        this.$router.push({name:"Room",params:{roomid : res.data, nickname:this.nickname, id : this.id}})
+      }, err=>{
+        console.log(err)
+        this.$router.push({ name: "Home" });
+      })
    }
   }
 }

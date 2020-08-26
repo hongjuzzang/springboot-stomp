@@ -56,7 +56,7 @@ export default {
         this.title = res.data
       }, err=>{
         console.log(err)
-        alert("error : 새로고침하세요")
+        this.$router.push({ name: "Home" });
       })
 
   // 채팅방 내용 불러오기
