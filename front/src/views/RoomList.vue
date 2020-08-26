@@ -34,13 +34,12 @@ export default {
     }
   },
   created(){
-    alert("Hi ! "+this.$route.params.nickname)
     this.id = this.$route.params.id
     this.nickname = this.$route.params.nickname
-    console.log(this.id+" / "+this.nickname)
      if (this.id == -1 || typeof this.id === "undefined") {
-      this.$router.push({ name: "Home" });
+       this.$router.push({ name: "Home" });
     }
+    alert("Hi ! "+this.$route.params.nickname)
     axios({
         method:'get',
         url:'/api/chat/rooms',
@@ -57,12 +56,13 @@ export default {
         }
       }, err=>{
         console.log(err)
+        alert("error : 새로고침하세요")
       })
 
   },
   methods: {
    enterRoom(id){
-     console.log(id)
+     this.$router.push({name:"Room",params:{roomid : id, nickname:this.nickname, id : this.id}})
    },
    createRoom(){
      console.log("방만들게")

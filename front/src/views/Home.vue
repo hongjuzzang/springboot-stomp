@@ -31,7 +31,8 @@ export default {
         this.nickname = res.data
           this.$router.push({name:"Roomlist",params:{id : this.id, nickname: this.nickname}})
       }, err=>{
-        console.log(err)
+        alert("id, nickname error")
+      console.log(err)
       })
     },
     createUser () {
@@ -47,6 +48,7 @@ export default {
         this.nickname = res.data.nickname
         this.$router.push({name:"Roomlist",params:{id : this.id, nickname: this.nickname}})
       }, err=>{
+        alert("create user error")
         console.log(err)
       })
     }
