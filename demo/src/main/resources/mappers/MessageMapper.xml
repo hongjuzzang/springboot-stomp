@@ -9,12 +9,17 @@
 	</insert>
 	
 	<select id="getMessagesByChatroomId" resultType="Message">
-		select id, content, sender_id
+	select t1.id as id, #{roomId} as chatroomId, t1.content as content, t1.sender_id as senderId, t2.nickname as senderNickname
+	from (
+	select 
+		id, content, sender_id
 		from message
 		inner join(select `id` from message where chatroom_id=#{roomId} order by id
 		desc limit #{idx}, 10) as q
 		using (`id`)
-		where chatroom_id=#{roomId}
+		where chatroom_id=#{roomId}) as t1 
+	inner join user as t2
+    on t1.sender_id = t2.id;
 	</select>
 	
 </mapper>

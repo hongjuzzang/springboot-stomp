@@ -25,4 +25,9 @@ public class ChatRoomService implements IChatRoomService {
 		return chatroomMapper.getAllChatRooms();
 	}
 
+	@Override
+	public String getRoomTitle(long id) {
+		return chatroomMapper.getRoomTitle(id);
+	}
+
 }

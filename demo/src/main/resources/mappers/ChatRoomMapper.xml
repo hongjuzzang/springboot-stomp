@@ -12,4 +12,10 @@
 	select id, title
 	from chatroom
 	</select>
+	
+	<select id="getRoomTitle" resultType="String" parameterType="long">
+	select title
+	from chatroom
+	where id=#{id}
+	</select>
 </mapper>
