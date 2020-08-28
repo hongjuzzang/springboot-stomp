@@ -21,7 +21,6 @@ public class MessageController {
 	private final SimpMessagingTemplate template;
 
 	@MessageMapping("/message")
-//	@SendTo("/sub/{{user_id}}") 대신 대상유저 둘에게 전달
 	public void sendMessage(@Payload Message chatMessage) {
 		log.info("전달 메세지 : " + chatMessage);
 		

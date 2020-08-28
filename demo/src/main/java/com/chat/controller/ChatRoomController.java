@@ -69,8 +69,6 @@ public class ChatRoomController {
 			@RequestParam(value = "page", defaultValue = "0") String page) {
 		long idx = page.equals("0") ? 0 : Integer.parseInt(page) * PAGE + 1;
 		List<Message> msgList = messageService.getMessagesByChatroomId(id, idx);
-		for (Message m : msgList)
-			System.out.println(m);
 		return ResponseEntity.status(HttpStatus.OK).body(msgList);
 	}
 
